@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.westemeyer</groupId>
     <artifactId>imagerenderer</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-
+    <version>1.1.0-SNAPSHOT</version>
     <organization>
         <name>Sebastian Westemeyer</name>
         <url>http://www.westemeyer.de/</url>
     </organization>
-
     <name>ImageRenderer</name>
     <description>This is the Image Renderer plugin for Atlassian JIRA.</description>
     <packaging>atlassian-plugin</packaging>
-
     <dependencies>
         <dependency>
             <groupId>com.atlassian.jira</groupId>
             <artifactId>jira-api</artifactId>
             <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.renderer</groupId>
+            <artifactId>atlassian-renderer</artifactId>
+            <version>${atlassian.renderer.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Add dependency on jira-core if you want access to JIRA implementation classes as well as the sanctioned API. -->
@@ -41,7 +41,6 @@
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
-
         <!-- WIRED TEST RUNNER DEPENDENCIES -->
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
@@ -60,10 +59,9 @@
             <artifactId>gson</artifactId>
             <version>2.2.2-atlassian-1</version>
         </dependency>
-
-		<!-- Uncomment to use TestKit in your project. Details at https://bitbucket.org/atlassian/jira-testkit -->
-		<!-- You can read more about TestKit at https://developer.atlassian.com/display/JIRADEV/Plugin+Tutorial+-+Smarter+integration+testing+with+TestKit -->
-		<!--
+        <!-- Uncomment to use TestKit in your project. Details at https://bitbucket.org/atlassian/jira-testkit -->
+        <!-- You can read more about TestKit at https://developer.atlassian.com/display/JIRADEV/Plugin+Tutorial+-+Smarter+integration+testing+with+TestKit -->
+        <!--
 		<dependency>
 			<groupId>com.atlassian.jira.tests</groupId>
 			<artifactId>jira-testkit-client</artifactId>
@@ -72,7 +70,6 @@
 		</dependency>
 		-->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -84,10 +81,10 @@
                     <productVersion>${jira.version}</productVersion>
                     <productDataVersion>${jira.version}</productDataVersion>
                     <instructions>
-                       <instruction>com.atlassian.jira.issue.fields.renderer.*</instruction>
+                        <instruction>com.atlassian.jira.issue.fields.renderer.*</instruction>
                     </instructions>
-					<!-- Uncomment to install TestKit backdoor in JIRA. -->
-					<!--
+                    <!-- Uncomment to install TestKit backdoor in JIRA. -->
+                    <!--
 					<pluginArtifacts>
 						<pluginArtifact>
 							<groupId>com.atlassian.jira.tests</groupId>
@@ -107,13 +104,13 @@
             </plugin>
         </plugins>
     </build>
-
     <properties>
-        <jira.version>6.4.11</jira.version>
-        <amps.version>5.1.16</amps.version>
+        <jira.version>7.6.1</jira.version>
+        <!-- atlassian.templaterenderer.version>1.0.5</atlassian.templaterenderer.version-->
+        <atlassian.renderer.version>8.0.22</atlassian.renderer.version>
+        <amps.version>6.3.13</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
-		<!-- TestKit version 6.x for JIRA 6.x -->
-		<testkit.version>6.3.11</testkit.version>
+        <!-- TestKit version 6.x for JIRA 6.x -->
+        <testkit.version>6.3.11</testkit.version>
     </properties>
-
 </project>
